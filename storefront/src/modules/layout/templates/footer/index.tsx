@@ -4,25 +4,99 @@ import { Text, clx } from "@medusajs/ui"
 
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import MedusaCTA from "@modules/layout/components/medusa-cta"
+import Image from "next/image"
+import Link from "next/link"
 
 export default async function Footer() {
   const { collections } = await getCollectionsList(0, 6)
   const { product_categories } = await getCategoriesList(0, 6)
 
   return (
-    <footer className="border-t border-ui-border-base w-full">
+    <footer className="border-t border-ui-border-base w-full border border-red-300">
       <div className="content-container flex flex-col w-full">
-        <div className="flex flex-col gap-y-6 xsmall:flex-row items-start justify-between py-40">
-          <div>
+        <div className="flex flex-col gap-y-6 xsmall:flex-row items-center justify-between">
+          <div className="container mx-auto">
+            <div className="flex justify-between items-center gap-x-12">
+              {/* Left Navigation */}
+              <nav className="space-y-4 border-r border-red-600">
+                <Link
+                  href="/about"
+                  className="block text-red-600 hover:text-red-400 transition-colors border-b border-red-600 py-4"
+                >
+                  ABOUT US
+                </Link>
+                <Link
+                  href="/retailers"
+                  className="block text-red-600 hover:text-red-400 transition-colors border-b border-red-600 py-4"
+                >
+                  RETAILERS
+                </Link>
+                <Link
+                  href="/privacy"
+                  className="block text-red-600 hover:text-red-400 transition-colors border-b border-red-600 py-4"
+                >
+                  PRIVACY POLICY
+                </Link>
+                <Link
+                  href="/shipping"
+                  className="block text-red-600 hover:text-red-400 transition-colors border-b border-red-600 py-4"
+                >
+                  SHIPPING & RETURNS
+                </Link>
+              </nav>
+
+              {/* Center Logo */}
+              <div className="text-center">
+                <Link href="/" className="inline-block">
+                  <Image
+                    src="https://res.cloudinary.com/dzxalfzwh/image/upload/v1735876908/lifelong-footer-logo.png"
+                    width={600}
+                    height={400}
+                    alt=""
+                  />
+                </Link>
+
+                <div className="mt-4">
+                  <p className="text-red-600 uppercase text-xl">
+                  the ultimate curation of durable and tech
+                  </p>
+                </div>
+              </div>
+
+              {/* Right Navigation */}
+              <nav className="space-y-4 text-right border-l border-red-600">
+                <Link
+                  href="https://instagram.com"
+                  className="block text-red-600 hover:text-red-400 transition-colors border-b border-red-600 py-4"
+                >
+                  INSTAGRAM
+                </Link>
+                <Link
+                  href="/terms"
+                  className="block text-red-600 hover:text-red-400 transition-colors border-b border-red-600 py-4"
+                >
+                  TERMS & CONDITIONS
+                </Link>
+                <Link
+                  href="/faq"
+                  className="block text-red-600 hover:text-red-400 transition-colors border-b border-red-600 py-4"
+                >
+                  FAQ
+                </Link>
+              </nav>
+            </div>
+          </div>
+
+          {/* <div>
             <LocalizedClientLink
               href="/"
               className="txt-compact-xlarge-plus text-ui-fg-subtle hover:text-ui-fg-base uppercase"
             >
               Medusa Store
             </LocalizedClientLink>
-          </div>
-          <div className="text-small-regular gap-10 md:gap-x-16 grid grid-cols-2 sm:grid-cols-3">
-            {product_categories && product_categories?.length > 0 && (
+          </div> */}
+
+          {/* {product_categories && product_categories?.length > 0 && (
               <div className="flex flex-col gap-y-2">
                 <span className="txt-small-plus txt-ui-fg-base">
                   Categories
@@ -79,8 +153,8 @@ export default async function Footer() {
                   })}
                 </ul>
               </div>
-            )}
-            {collections && collections.length > 0 && (
+            )} */}
+          {/* {collections && collections.length > 0 && (
               <div className="flex flex-col gap-y-2">
                 <span className="txt-small-plus txt-ui-fg-base">
                   Collections
@@ -105,50 +179,49 @@ export default async function Footer() {
                   ))}
                 </ul>
               </div>
-            )}
-            <div className="flex flex-col gap-y-2">
-              <span className="txt-small-plus txt-ui-fg-base">Medusa</span>
-              <ul className="grid grid-cols-1 gap-y-2 text-ui-fg-subtle txt-small">
-                <li>
-                  <a
-                    href="https://github.com/medusajs"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-ui-fg-base"
-                  >
-                    GitHub
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://docs.medusajs.com"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-ui-fg-base"
-                  >
-                    Documentation
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/medusajs/nextjs-starter-medusa"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-ui-fg-base"
-                  >
-                    Source code
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
+            )} */}
+          {/* <div className="flex flex-col gap-y-2">
+            <span className="txt-small-plus txt-ui-fg-base">Medusa</span>
+            <ul className="grid grid-cols-1 gap-y-2 text-ui-fg-subtle txt-small">
+              <li>
+                <a
+                  href="https://github.com/medusajs"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-ui-fg-base"
+                >
+                  GitHub
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://docs.medusajs.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-ui-fg-base"
+                >
+                  Documentation
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/medusajs/nextjs-starter-medusa"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-ui-fg-base"
+                >
+                  Source code
+                </a>
+              </li>
+            </ul>
+          </div> */}
         </div>
-        <div className="flex w-full mb-16 justify-between text-ui-fg-muted">
+        {/* <div className="flex w-full mb-16 justify-between text-ui-fg-muted">
           <Text className="txt-compact-small">
             © {new Date().getFullYear()} Medusa Store. All rights reserved.
           </Text>
           <MedusaCTA />
-        </div>
+        </div> */}
       </div>
     </footer>
   )

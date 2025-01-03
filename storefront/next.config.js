@@ -33,6 +33,10 @@ const nextConfig = {
         protocol: "https",
         hostname: process.env.NEXT_PUBLIC_MINIO_ENDPOINT,
       }] : []),
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com", // Add this entry
+      },
     ],
   },
   serverRuntimeConfig: {
